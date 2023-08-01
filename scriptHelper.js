@@ -18,19 +18,19 @@ function addDestinationInfo(document, name, diameter, star, distance, moons, ima
 }
 
 function validateInput(testInput) {
-    if (testInput.value === "" || testInput.value === null) { return "Empty"; };
-    if (isNaN(testInput.value)) { return "Not a Number"; };
-    if (!isNaN(testInput.value)) { return "Is a Number"; };
+    if (testInput === "" || testInput === null) { return "Empty"; };
+    if (isNaN(testInput)) { return "Not a Number"; };
+    if (!isNaN(testInput)) { return "Is a Number"; };
 }
 
 function formSubmission(document, list, pilot, copilot, fuelLevel, cargoLevel) {
     let form = document.querySelector('[data-testid="testForm"]');
     form.addEventListener("submit", event => {
 
-        let validatePilot = validateInput(pilot);
-        let validateCopilot = validateInput(copilot);
-        let validateFuel = validateInput(fuelLevel);
-        let validateCargo = validateInput(cargoLevel);
+        let validatePilot = validateInput(pilot.value);
+        let validateCopilot = validateInput(copilot.value);
+        let validateFuel = validateInput(fuelLevel.value);
+        let validateCargo = validateInput(cargoLevel.value);
 
         if (validatePilot === "Empty" || validateCopilot === "Empty" || validateFuel === "Empty" || validateCargo === "Empty") {
             alert("All fields are required!");
@@ -91,7 +91,7 @@ function pickPlanet(planets) {
 
     let index = Math.floor(Math.random() * planets.length);
     return planets[index];
-    
+
 }
 
 module.exports.addDestinationInfo = addDestinationInfo;

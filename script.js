@@ -11,10 +11,9 @@ window.addEventListener("load", function() {
 
     let listedPlanets;
     let listedPlanetsResponse = myFetch();
-    
+
     listedPlanetsResponse.then(function (result) {
         listedPlanets = result;
-        console.log(listedPlanets);
         return pickPlanet(listedPlanets)
     }).then(planet => {
         let name = planet.name;
